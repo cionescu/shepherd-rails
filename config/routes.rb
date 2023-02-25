@@ -1,2 +1,2 @@
-Sr::Engine.routes.draw do
+ShepherdRails::Engine.routes.draw do
 end

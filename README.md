@@ -1,5 +1,5 @@
-# Sr
-Short description and motivation.
+# Shepherd-Rails
+A modern wrapper for using [Shepherd.js](https://shepherdjs.dev/) with Ruby on Rails
 
 ## Usage
 How to use my plugin.
@@ -8,7 +8,7 @@ How to use my plugin.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "sr"
+gem "shepherd-rails"
 ```
 
 And then execute:
@@ -18,11 +18,11 @@ $ bundle
 
 Or install it yourself as:
 ```bash
-$ gem install sr
+$ gem install shepherd-rails
 ```
 
-## Contributing
-Contribution directions go here.
+## Dependencies
+- [Stimulus](https://stimulus.hotwired.dev/)
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
