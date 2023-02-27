@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A modern wrapper for using Shepherd.js with Ruby on Rails",
   "repository": "git@github.com:cionescu/shepherd-rails.git",
-  "author": "Catalin Ionescu (https://catalinionescu.dev/)",
+  "author": "Catalin Ionescu <catalin.ionescu282@gmail.com>",
   "type": "module",
   "main": "src/shepherd-rails.js",
   "module": "src/shepherd-rails.js",
@@ -29,7 +29,7 @@
     "postcss-import": "^15.0.1",
     "postcss-nested": "^6.0.0",
     "rollup": "^3.17.0",
-    "rollup-plugin-terser": "^7.0.2",
+    "@rollup/plugin-terser": "^7.0.2",
     "@rollup/plugin-node-resolve": "^15.0.1"
   },
   "dependencies": {
