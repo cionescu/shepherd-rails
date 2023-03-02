@@ -15,12 +15,16 @@ Gem::Specification.new do |spec|
   spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = "https://github.com/cionescu/shepherd-rails"
-  spec.metadata['changelog_uri'] = "https://github.com/cionescu/shepherd-rails"
+  spec.metadata['source_code_uri'] = 'https://github.com/cionescu/shepherd-rails'
+  spec.metadata['changelog_uri'] = 'https://github.com/cionescu/shepherd-rails'
 
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
   end
 
-  spec.add_dependency 'rails', '>= 7.0.4'
+  spec.test_files = Dir["spec/**/*"]
+
+  spec.add_dependency 'rails', '>= 7.0.0'
+
+  spec.add_development_dependency 'rspec-rails'
 end
