@@ -1,5 +1,5 @@
 import Shepherd from "shepherd.js";
-
+import { post } from '@rails/request.js'
 import { Controller } from "@hotwired/stimulus";
 
 class ShepherdRails extends Controller {
