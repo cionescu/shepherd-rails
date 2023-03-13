@@ -4,43 +4,74 @@ import { Controller } from "@hotwired/stimulus";
 
 class ShepherdRails extends Controller {
   static values={
-    config: Object
+    tourName: String,
+    config: Object,
   };
+
   initialize() {
     this.tour = new Shepherd.Tour(this.configValue.tour);
+    console.log(this.configValue);
   }
+
   connect() {
-    console.log("Shepherd joined the chat");
-    let {steps: steps} = this.configValue;
-    if (steps.length > 0) {
-      steps = steps.map((step => {
-        let {buttons: buttons, ...rest} = step;
-        if (buttons) {
-          buttons = buttons.map((button => {
-            switch (button.action) {
-             case "next":
-              button.action = this.tour.next;
-              break;
+    console.log("Shepherd-Rails joined the chat");
 
-             case "back":
-              button.action = this.tour.back;
-              break;
+    const steps = this.processTourConfigAction(this.configValue.steps)
 
-             default:
-              button.action = this.tour.complete;
-            }
-            return button;
-          }));
-        }
-        return {
-          buttons: buttons,
-          ...rest
-        };
-      }));
+    if (steps) {
+      this.addTourListeners()
+
+      console.log(steps);
+      this.tour.addSteps(steps);
+      this.tour.start();
     }
-    console.log(steps);
-    this.tour.addSteps(steps);
-    this.tour.start();
+  }
+
+  addTourListeners() {
+    console.log("Adding tour listeners");
+
+    [
+      'hide',
+      'cancel',
+      'complete',
+      // 'show',
+      'start'
+    ].map(eventName => {
+      this.tour.on(eventName, (event) => this.processTourEvent({ event, tourName: this.tourNameValue, eventName }))
+    })
+  }
+
+  processTourEvent({ event, tourName, eventName }) {
+    console.log(event, tourName, eventName)
+  }
+
+  processTourConfigAction(steps) {
+    if (!steps.length) { return false }
+
+    return steps.map((step => {
+      let {buttons: buttons, ...rest} = step;
+      if (buttons) {
+        buttons = buttons.map((button => {
+          switch (button.action) {
+            case "next":
+            button.action = this.tour.next;
+            break;
+
+            case "back":
+            button.action = this.tour.back;
+            break;
+
+            default:
+            button.action = this.tour.complete;
+          }
+          return button;
+        }));
+      }
+      return {
+        buttons: buttons,
+        ...rest
+      };
+    }));
   }
 }
 
