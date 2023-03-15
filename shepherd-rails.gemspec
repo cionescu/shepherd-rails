@@ -10,6 +10,8 @@ Gem::Specification.new do |spec|
   spec.description = 'A modern wrapper for using Shepherd.js with Ruby on Rails'
   spec.license     = 'MIT'
 
+  spec.required_ruby_version = '>= 2.7.0'
+
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the "allowed_push_host"
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
@@ -22,9 +24,5 @@ Gem::Specification.new do |spec|
     Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
   end
 
-  spec.test_files = Dir["spec/**/*"]
-
   spec.add_dependency 'rails', '>= 7.0.0'
-
-  spec.add_development_dependency 'rspec-rails'
 end
