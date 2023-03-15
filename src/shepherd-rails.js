@@ -3654,7 +3654,7 @@ class ShepherdRails extends Controller {
     }));
   }
   async processTourEvent({event: event, tourName: tourName, eventName: eventName}) {
-    console.log(`${tourName} reached ${eventName}`);
+    console.log(`Tour '${tourName}' reached event '${eventName}'`);
     const body = JSON.stringify({
       tour: tourName,
       event: eventName
