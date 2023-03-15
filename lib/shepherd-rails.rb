@@ -1,6 +1,14 @@
 require 'shepherd-rails/version'
 require 'shepherd-rails/engine'
+require 'shepherd-rails/config'
 
 module ShepherdRails
-  # Your code goes here...
+  class << self
+    attr_accessor :configuration
+
+    def configure
+      self.configuration ||= Config.new
+      yield(configuration)
+    end
+  end
 end
