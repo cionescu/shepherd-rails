@@ -7,7 +7,7 @@
 .byebug_history
 /node_modules/
 /.idea
-
+.DS_Store
 spec/dummy/tmp/
 spec/dummy/node_modules/
 spec/dummy/config/master.key

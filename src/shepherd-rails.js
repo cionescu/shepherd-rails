@@ -5,6 +5,7 @@ import { Controller } from "@hotwired/stimulus";
 class ShepherdRails extends Controller {
   static values={
     tourName: String,
+    endpoint: String,
     config: Object,
   };
 
