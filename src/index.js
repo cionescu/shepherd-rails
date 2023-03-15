@@ -35,15 +35,22 @@ class ShepherdRails extends Controller {
       'hide',
       'cancel',
       'complete',
-      // 'show',
       'start'
     ].map(eventName => {
       this.tour.on(eventName, (event) => this.processTourEvent({ event, tourName: this.tourNameValue, eventName }))
     })
   }
 
-  processTourEvent({ event, tourName, eventName }) {
-    console.log(event, tourName, eventName)
+  async processTourEvent({ event, tourName, eventName }) {
+    console.log(`Tour '${tourName}' reached event '${eventName}'`)
+
+    const body = JSON.stringify({ tour: tourName, event: eventName })
+    const response = await post(this.endpointValue, { body })
+    if (response.ok) {
+      console.log('Posted')
+    } else {
+      console.warn('Failed', response)
+    }
   }
 
   processTourConfigAction(steps) {

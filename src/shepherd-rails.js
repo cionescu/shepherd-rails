@@ -1,4 +1,4 @@
-import "@rails/request.js";
+import { post } from "@rails/request.js";
 
 import { Controller } from "@hotwired/stimulus";
 
@@ -3653,8 +3653,20 @@ class ShepherdRails extends Controller {
       })));
     }));
   }
-  processTourEvent({event: event, tourName: tourName, eventName: eventName}) {
-    console.log(event, tourName, eventName);
+  async processTourEvent({event: event, tourName: tourName, eventName: eventName}) {
+    console.log(`${tourName} reached ${eventName}`);
+    const body = JSON.stringify({
+      tour: tourName,
+      event: eventName
+    });
+    const response = await post(this.endpointValue, {
+      body: body
+    });
+    if (response.ok) {
+      console.log("Posted");
+    } else {
+      console.warn("Failed", response);
+    }
   }
   processTourConfigAction(steps) {
     if (!steps.length) {
