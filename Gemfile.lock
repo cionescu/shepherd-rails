@@ -83,6 +83,9 @@ GEM
       activesupport (>= 5.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
+    importmap-rails (1.1.5)
+      actionpack (>= 6.0.0)
+      railties (>= 6.0.0)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -168,8 +171,14 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.6.1-arm64-darwin)
     sqlite3 (1.6.1-x86_64-darwin)
+    stimulus-rails (1.2.1)
+      railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.3.2)
+    turbo-rails (1.4.0)
+      actionpack (>= 6.0.0)
+      activejob (>= 6.0.0)
+      railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     web-console (4.2.0)
@@ -187,11 +196,14 @@ PLATFORMS
   x86_64-darwin-22
 
 DEPENDENCIES
+  importmap-rails
   puma
   rspec-rails
   shepherd-rails!
   sprockets-rails
   sqlite3
+  stimulus-rails
+  turbo-rails
   web-console
 
 BUNDLED WITH
