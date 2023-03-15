@@ -6,7 +6,7 @@ module ShepherdRails
       tag.div nil, data: {
         controller: 'shepherd-rails',
         'shepherd-rails-tour-name-value' => tour,
-        'shepherd-rails-endpoint-value' => ,
+        'shepherd-rails-endpoint-value' => shepherd_rails.tour_statuses_path,
         'shepherd-rails-config-value' => I18n.t(tour, scope: 'shepherd_rails')
       }
     end

@@ -10,9 +10,13 @@ module ShepherdRails
       g.helper false
     end
 
-    initializer 'shepherd_rails.action_controller' do |app|
+    initializer 'shepherd_rails' do |app|
       ActiveSupport.on_load :action_controller do
         helper ShepherdRails::ApplicationHelper
+      end
+
+      app.routes.append do
+        mount ShepherdRails::Engine => '/shepherd-rails'
       end
     end
   end
