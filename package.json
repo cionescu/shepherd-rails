@@ -1,6 +1,6 @@
 {
   "name": "shepherd-rails",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A modern wrapper for using Shepherd.js with Ruby on Rails",
   "repository": "git@github.com:cionescu/shepherd-rails.git",
   "author": "Catalin Ionescu <catalin.ionescu282@gmail.com>",

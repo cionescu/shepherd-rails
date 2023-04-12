@@ -3627,24 +3627,21 @@ class ShepherdRails extends Controller {
   static values={
     tourName: String,
     endpoint: String,
-    config: Object
+    config: Object,
+    context: Object
   };
   initialize() {
     this.tour = new Shepherd.Tour(this.configValue.tour);
-    console.log(this.configValue);
   }
   connect() {
-    console.log("Shepherd-Rails joined the chat");
     const steps = this.processTourConfigAction(this.configValue.steps);
     if (steps) {
       this.addTourListeners();
-      console.log(steps);
       this.tour.addSteps(steps);
       this.tour.start();
     }
   }
   addTourListeners() {
-    console.log("Adding tour listeners");
     [ "hide", "cancel", "complete", "start" ].map((eventName => {
       this.tour.on(eventName, (event => this.processTourEvent({
         event: event,
@@ -3654,17 +3651,15 @@ class ShepherdRails extends Controller {
     }));
   }
   async processTourEvent({event: event, tourName: tourName, eventName: eventName}) {
-    console.log(`Tour '${tourName}' reached event '${eventName}'`);
     const body = JSON.stringify({
       tour: tourName,
-      event: eventName
+      event: eventName,
+      context: this.contextValue
     });
     const response = await post(this.endpointValue, {
       body: body
     });
-    if (response.ok) {
-      console.log("Posted");
-    } else {
+    if (response.ok) ; else {
       console.warn("Failed", response);
     }
   }

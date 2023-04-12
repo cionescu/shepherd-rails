@@ -7,29 +7,30 @@ class ShepherdRails extends Controller {
     tourName: String,
     endpoint: String,
     config: Object,
+    context: Object
   };
 
   initialize() {
     this.tour = new Shepherd.Tour(this.configValue.tour);
-    console.log(this.configValue);
+    // console.log(this.configValue);
   }
 
   connect() {
-    console.log("Shepherd-Rails joined the chat");
+    // console.log("Shepherd-Rails joined the chat");
 
     const steps = this.processTourConfigAction(this.configValue.steps)
 
     if (steps) {
       this.addTourListeners()
 
-      console.log(steps);
+      // console.log(steps);
       this.tour.addSteps(steps);
       this.tour.start();
     }
   }
 
   addTourListeners() {
-    console.log("Adding tour listeners");
+    // console.log("Adding tour listeners");
 
     [
       'hide',
@@ -42,12 +43,12 @@ class ShepherdRails extends Controller {
   }
 
   async processTourEvent({ event, tourName, eventName }) {
-    console.log(`Tour '${tourName}' reached event '${eventName}'`)
+    // console.log(`Tour '${tourName}' reached event '${eventName}'`)
 
-    const body = JSON.stringify({ tour: tourName, event: eventName })
+    const body = JSON.stringify({ tour: tourName, event: eventName, context: this.contextValue })
     const response = await post(this.endpointValue, { body })
     if (response.ok) {
-      console.log('Posted')
+      // console.log('Posted')
     } else {
       console.warn('Failed', response)
     }
