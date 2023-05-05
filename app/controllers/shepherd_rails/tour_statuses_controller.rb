@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
 module ShepherdRails
   class TourStatusesController < ShepherdRails.configuration.base_controller.constantize
+    protect_from_forgery with: :null_session
+
     def create
       tour_name = params.require(:tour)
       context = params.to_unsafe_h[:context].to_h.with_indifferent_access
